@@ -17,12 +17,12 @@ Navigate Robot using **keyboard**
 ```sh
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
-Launch **slam_toolbox**
+Launch **slam_toolbox** for mapping
 ```sh
 ros2 launch slam_toolbox online_async_launch.py param_file:=./src/ro-bo-bo-t/config/mapper_params_online_async.yaml use_sim_time:=true
 ```
 
-
+After mapping we can save the map and run nav2 stack for validating map and localization.\
 For **localization** using nav2
 Load map and run map_server
 ```sh
@@ -33,4 +33,13 @@ Launch amcl for localization
 ```sh
 ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 ros2 run nav2_util lifecycle_bringup amcl
+```
+
+OR launch following files:(load map, create costmap)
+```sh
+ros2 launch nav2_bringup localization_launch.py map:=./src/ro-bo-bo-t/map/map_save.yaml use_sim_time:=true
+```
+(AMCL for localization)
+```sh
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
 ```
