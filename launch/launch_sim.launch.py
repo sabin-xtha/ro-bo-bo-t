@@ -31,7 +31,7 @@ def generate_launch_description():
                     get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
 
                     launch_arguments={'world': os.path.join(
-                    get_package_share_directory('ro-bo-bo-t'), 'worlds', 'robo.world')}.items()
+                    get_package_share_directory('ro-bo-bo-t'), 'worlds', 'mini_world.world')}.items()
     
              )
 
